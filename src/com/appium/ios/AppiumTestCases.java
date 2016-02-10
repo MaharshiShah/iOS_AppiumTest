@@ -3,19 +3,19 @@ package com.appium.ios;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Test;
 
 public class AppiumTestCases {
 
 	WebDriver driver;
 
-	@Before
+	@BeforeSuite
 	public void setUp() throws MalformedURLException {
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("platformName", "iOS");
@@ -27,7 +27,7 @@ public class AppiumTestCases {
 	}
 
 	@Test
-	public void testiOS() throws InterruptedException {
+	public void iOSTestCase() throws InterruptedException {
 		Thread.sleep(3000);
 		driver.findElement(
 				By.xpath("//UIAApplication[1]/UIAWindow[2]/UIATableView[1]/UIATableCell[1]/UIAStaticText[1]"))
@@ -35,7 +35,7 @@ public class AppiumTestCases {
 		driver.findElement(By.name("Back")).click();
 	}
 
-	@After
+	@AfterSuite
 	public void tearDown() {
 		driver.quit();
 	}
